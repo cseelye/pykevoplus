@@ -1,4 +1,5 @@
 from setuptools import setup
+import os
 
 setup(
     name = "pykevoplus",
@@ -10,5 +11,9 @@ setup(
     keywords = "kevo kwikset",
     packages = ["pykevoplus"],
     url = "https://github.com/cseelye/pykevoplus",
-    long_description = read("README.md")
+    long_description = open(os.path.join(os.path.dirname(__file__), "README.rst")).read(),
+    install_requires = [
+        "requests",
+        "beautifulsoup4"
+    ]
 )
