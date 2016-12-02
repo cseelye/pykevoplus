@@ -1,4 +1,4 @@
-# pykevo
+# pykevoplus
 Python module for controlling Kwikset Kevo locks
 
 Kwikset does not provide an official API for their Kevo locks; I reverse engineered this module from the mykevo.com web app.
@@ -11,7 +11,7 @@ The Kevo.GetLocks() function will attempt to scrape the mykevo.com web site to f
 find all of your locks, but scraping the HTML might break at any time if Kwikset changes the website.
 
 ```python
-from pykevo import Kevo
+from pykevoplus import Kevo
 locks = Kevo.GetLocks("username@email.com", "password123")
 for lock in locks:
     print repr(lock)
@@ -23,15 +23,15 @@ A better way is to explicitly instantiate a KevoLock object using the UUID of th
 logging into mykevo.com, click Details for the lock, click Settings, the lock ID is on the right.
 
 ```python
-from pykevo import KevoLock
-lock = KevoLock.FromLockID("8f61e0fe-8584-442f-9ea0-b2dde6ff4d5a", "username@gmail.com", "password123")
+from pykevoplus import KevoLock
+lock = KevoLock.FromLockID("cca7cd1d-c1d5-43ce-a087-c73b974b3529, state=Locked)  ", "username@email.com", "password123")
 ```
 
 #####Locking and Unlocking
 
 ```python
-from pykevo import KevoLock
-lock = KevoLock.FromLockID(lock_is, username, password)
+from pykevoplus import KevoLock
+lock = KevoLock.FromLockID(lock_id, username, password)
 lock.Unlock()
 print lock.GetBoltState()
 lock.Lock()
@@ -43,7 +43,7 @@ print lock.GetBoltState()
 ##### Multiple operations in the same session
 The KevoLockSession context manager allows you to perform multiple operations on a lock with a single auth session
 ```python
-from pykevo import KevoLock, KevoLockSession
+from pykevoplus import KevoLock, KevoLockSession
 lock = KevoLock.FromLockID(lock_id, username, password)
 with KevoLockSession(lock):
     lock.Unlock()
