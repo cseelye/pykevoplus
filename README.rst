@@ -41,7 +41,7 @@ on the right.
 .. code:: python
 
     from pykevoplus import KevoLock
-    lock = KevoLock.FromLockID("cca7cd1d-c1d5-43ce-a087-c73b974b3529, state=Locked)  ", "username@email.com", "password123")
+    lock = KevoLock.FromLockID("cca7cd1d-c1d5-43ce-a087-c73b974b3529", "username@email.com", "password123")
 
 Locking and Unlocking
 '''''''''''''''''''''
