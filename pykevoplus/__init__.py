@@ -105,7 +105,7 @@ def _manage_session(method):
             Kevo.Login(self.session, self.username, self.password)
             close_session = True
         try:
-            method(self, *args, **kwargs)
+            return method(self, *args, **kwargs)
         finally:
             if self.session and close_session:
                 self.session.close()
@@ -270,7 +270,7 @@ class KevoLock(object):
             The bolt state (str)
         """
         self.Refresh()
-        return self.state
+        return self.data["bolt_state"]
 
     def IsLocked(self):
         """
@@ -279,7 +279,7 @@ class KevoLock(object):
         Returns:
             True if locked, false otherwise (bool)
         """
-        return self.GetBoltState() == "Locked"
+        return self.GetBoltState().lower() == "locked"
 
     def IsUnlocked(self):
         """
@@ -288,7 +288,7 @@ class KevoLock(object):
         Returns:
             True if unlocked, false otherwise (bool)
         """
-        return self.GetBoltState() == "Unlocked"
+        return self.GetBoltState().lower() == "unlocked"
 
 
 class KevoLockSession(object):
