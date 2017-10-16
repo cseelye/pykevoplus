@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3.6
 """
 This module provides convenient wrappers for controlling Kwikset Kevo locks
 """
@@ -93,7 +93,7 @@ class Kevo(object):
         return locks
 
 def _manage_session(method):
-    """ 
+    """
     Decorator to handle the HTTP session to mykevo.com
     This allows methods in KevoLock to not have to manage auth sessions themselves
     """
@@ -309,24 +309,9 @@ class KevoLockSession(object):
 if __name__ == "__main__":
     from getpass import getpass
 
-    user = raw_input("Username: ")
+    user = input("Username: ")
     passwd = getpass("Password: ")
 
     # Scrape the mykevo.com site to find the locks
     for kevolock in Kevo.GetLocks(user, passwd):
-        print repr(kevolock)
-
-    # Instantiate locks from IDs
-    # Get the lock IDs by logging into mykevo.com, click Details for the lock, click Settings, the lock ID is on the right
-#    front_door_id = "cca7cd1d-c1d5-43ce-a087-c73b974b3529"
-#    back_door_id = "c60130cd-8139-4688-8ba3-199276a65ad6"
-#    for lock_id in [front_door_id, back_door_id]:
-#        kevolock = KevoLock.FromLockID(lock_id, user, passwd)
-#        print str(kevolock)
-
-    # Do multiple operations on a lock using a single session
-#    kevolock = KevoLock.FromLockID(garage_door_id, user, passwd)
-#    with KevoLockSession(kevolock):
-#        kevolock.Unlock()
-#        kevolock.Lock()
-
+        print(repr(kevolock))
