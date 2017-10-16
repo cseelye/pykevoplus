@@ -79,7 +79,7 @@ Known Issues
 
 * Error handling is extremely basic and needs much more work. Communication errors as well as lock bolt errors need to be addressed
 * No unit tests yet
-* Currently only python 2.7 support
+* Now supports Python 3.x
 
 
 
