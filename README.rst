@@ -19,7 +19,7 @@ Usage
 The ``Kevo.GetLocks()`` function will attempt to scrape the mykevo.com web
 site to find your locks; as of this writing it can find all of your
 locks, but scraping the HTML might break at any time if Kwikset changes
-the website. *This is broken with recent CAPTCHA changes on the Kevo web site*
+the website. *This is broken as of 9 Sep 2019 due to recent CAPTCHA changes on the Kevo web site, however the KevoLock.FromLockID() method still works.*
 
 .. code:: python
 
